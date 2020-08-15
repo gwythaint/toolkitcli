@@ -1,0 +1,9 @@
+#!/usr/bin/emacs --script
+(while command-line-args-left 
+       (setq target (pop command-line-args-left))
+       (find-file target)
+       (delete-trailing-whitespace)
+       (save-buffer)
+       (kill-buffer)
+)
+

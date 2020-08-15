@@ -1,0 +1,15 @@
+#!/usr/bin/emacs --script
+;(print command-line-args-left)
+
+(defun untabify-buffer ()
+    "Untabify the whole buffer."
+    (untabify (point-min) (point-max))
+)
+
+(while command-line-args-left 
+    (setq target (pop command-line-args-left))
+    (find-file target)
+    (untabify-buffer)
+    (save-buffer)
+    (kill-buffer)
+)
